@@ -1,0 +1,6 @@
+A = 20
+B = 11
+
+difference = A - B
+
+print("The difference between A and B is:",difference)
