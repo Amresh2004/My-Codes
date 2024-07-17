@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unordered HTML List</title>
+    <style>
+        ul {
+            border: 3px solid black;
+        }
+        ul ul {
+            border: none;
+            padding-left: 20px;
+        }
+        ul ul ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>Coffee</li>
+        <li>Tea
+            <ul type="circle">
+                <li>Green Tea</li>
+                <li>Black Tea
+                    <ul type="square">
+                        <li>Africa</li>
+                        <li>China</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Milk</li>            
+    </ul>
+</body>
+</html>

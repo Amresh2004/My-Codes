@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unordered HTML List</title>
+    <style>
+        ul {
+            border: 3px solid black;
+        }
+        ul ul {
+            border: none;
+            padding-left: 20px;
+        }
+        ul ul ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>Fruits</li>
+            <ul type="circle">
+                <li>Banana</li>
+                <li>Orange</li>
+                <li>Apple
+                    <ul type="square">
+                        <li>Pine Apple</li>
+                        <li>Custed Apple</li>
+                        <li>Water Apple</li>
+                     </ul>
+                <li>Lemon</li>
+            </ul>
+        </li>
+        <li>Vegetable</li> 
+        <ul type="circle">
+            <li>Fengurrek</li>
+            <li>spinach</li>
+        </ul>           
+    </ul>
+</body>
+</html>
