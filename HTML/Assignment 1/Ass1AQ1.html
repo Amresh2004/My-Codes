@@ -3,14 +3,36 @@
 <head>
     <title>ASSIGNMENT 1 SET A Q1</title>
     <style>
-        body{
-            border: 1px solid black;
-            display: inline-block;
-            padding: 6px;
+        .card{
+            margin: 0 auto;
+            padding: 2rem;
+            width: 300px;
+            background: #1c1f2b;
+            border-radius: 10px;
+            color: aqua;
+            position: relative;
+            background-color: black;
+        }
+        .card::after, .card::before{
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-image: conic-gradient(#ff4545,#00ff99,#006aff,#ff0095,#ff4545);
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            z-index: -1;
+            padding: 3px;
+            border-radius: 10px;
+        }
+        .card::before{
+            filter: blur(1.5rem);
         }
     </style>
 </head>
 <body>
+    <div class="card">
     List of Indian States with their capital
     <ol>    
     <li>Delhi
@@ -44,5 +66,6 @@
             </ul>
         </li>
     </ol>
+    </div>
 </body>
 </html>
