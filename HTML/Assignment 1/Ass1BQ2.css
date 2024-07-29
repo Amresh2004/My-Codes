@@ -1,9 +1,48 @@
-body{
-    font-size: 20px;
-    width: 100%;
-    height: 50vh;
-    color: rgb(255, 127, 127);
-    background-color: rgb(0, 255, 123);
-    font-family: Arial;
+#plant-list {
+    font-family: Arial, sans-serif;
+    list-style-type: none;
+}
+
+.non-flowering {
+    color: green;
+}
+
+.flowering {
+    color: blue;
+}
+
+.sub-list {
+    margin-left: 20px;
+}
+
+.plant {
+    margin: 5px 0;
+}
+
+.fern {
     font-style: italic;
+}
+
+.spore {
+    text-transform: uppercase;
+}
+
+.lilly {
+    text-decoration: underline;
+}
+
+.rose {
+    font-weight: bold;
+}
+
+.rose-types {
+    margin-left: 40px;
+}
+
+.red-rose {
+    color: red;
+}
+
+.pink-rose {
+    color: pink;
 }
