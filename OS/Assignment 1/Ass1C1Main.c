@@ -34,6 +34,13 @@ int main(int argc, char *argv[]) {
 
     sort(arr, n);
 
+    // Display the sorted array
+    printf("Sorted array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
     pid_t pid = fork();
 
     if (pid < 0) {
@@ -62,11 +69,15 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-SAVE AS sort.c
-after code do the compile code
-     gcc sort.c -o sort
-     gcc binary_search -o binary_search
-     ./sort 5 7 6 4
-     OUTPUT:-
-     Enter the number to be Search:- 5
-     Enterd number INdex :- 0;
+compile:-
+    vim sort.c
+    vim binary_serach.c
+    amresh2004@Amresh:~$ vim binary_search.c
+    amresh2004@Amresh:~$ vim binary_serach.c
+    amresh2004@Amresh:~$ gcc sort.c -o sort
+    amresh2004@Amresh:~$ gcc binary_serach.c -o binary_search
+OUTPUT:-
+ ./sort 4 6 8 3
+Sorted array: 3 4 6 8
+Enter the number to search: 3
+Element found at index: 0
