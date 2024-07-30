@@ -11,7 +11,10 @@
 
 void countFile(char *filename, char mode) {
     FILE *file = fopen(filename, "r");
-    if (!file) { perror("fopen"); return; }
+    if (!file) {
+        perror("fopen");
+        return;
+    }
     int count = 0, c;
     while ((c = fgetc(file)) != EOF) {
         if (mode == 'c') count++;
@@ -28,9 +31,17 @@ void executeCommand(char **args) {
         else printf("Usage: count <c|w|l> filename\n");
     } else {
         pid_t pid = fork();
-        if (pid == -1) perror("fork");
-        else if (pid == 0) { if (execvp(args[0], args) == -1) perror("execvp"); exit(EXIT_FAILURE); }
-        else { int status; waitpid(pid, &status, 0); }
+        if (pid == -1) {
+            perror("fork");
+        } else if (pid == 0) {
+            if (execvp(args[0], args) == -1) {
+                perror("execvp");
+                exit(EXIT_FAILURE);
+            }
+        } else {
+            int status;
+            waitpid(pid, &status, 0);
+        }
     }
 }
 
@@ -42,7 +53,10 @@ int main() {
         cmd[strcspn(cmd, "\n")] = '\0';
         int i = 0;
         token = strtok(cmd, " ");
-        while (token && i < MAX_TOKENS - 1) args[i++] = token, token = strtok(NULL, " ");
+        while (token && i < MAX_TOKENS - 1) {
+            args[i++] = token;
+            token = strtok(NULL, " ");
+        }
         args[i] = NULL;
         if (args[0]) executeCommand(args);
     }
