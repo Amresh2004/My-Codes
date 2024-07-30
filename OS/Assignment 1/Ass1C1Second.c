@@ -49,3 +49,16 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
+CREATE COMPILE AND RUN:-
+    vim sort.c
+    vim binary_serach.c
+    amresh2004@Amresh:~$ vim binary_search.c
+    amresh2004@Amresh:~$ vim binary_serach.c
+    amresh2004@Amresh:~$ gcc sort.c -o sort
+    amresh2004@Amresh:~$ gcc binary_serach.c -o binary_search
+    amresh2004@Amresh:~$ ./sort 4 6 8 3
+
+OUTPUT:-
+    Sorted array: 3 4 6 8
+    Enter the number to search: 3
+    Element found at index: 0
