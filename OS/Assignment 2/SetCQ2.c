@@ -88,3 +88,24 @@ int main() {
 
     return 0;
 }
+
+
+AFTER CRETAE a.txt file In that write:
+a.txt:-
+    This is a sample file.
+    This file is used to demonstrate the search functionality. 
+    We will search for a pattern in this file.
+    The pattern might be found multiple times.
+    Let's see how the search command works.
+    Search can be done for the first occurrence, all occurrences, or just count them.
+    This is the end of the sample file.
+
+    
+OUTPUT:-
+    myshell$ search f a.txt pattern
+             First occurrence at line 4: We will search for a pattern in this file.
+    myshell$ search a a.txt pattern
+             Occurrence at line 4: We will search for a pattern in this file.
+             Occurrence at line 5: The pattern might be found multiple times.
+    myshell$ search c a.txt pattern
+T            total occurrences: 2
