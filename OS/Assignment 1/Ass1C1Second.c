@@ -49,13 +49,3 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-
-Save as binary_serach.c
-
-    after code do the compile code
-     gcc sort.c -o sort
-     gcc binary_search -o binary_search
-     ./sort 5 7 6 4
-     OUTPUT:-
-     Enter the number to be Search:- 5
-     Enterd number INdex :- 0;
