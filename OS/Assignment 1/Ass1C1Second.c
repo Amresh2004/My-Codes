@@ -1,40 +1,61 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int binarySearch(int arr[], int l, int r, int x) {
-    if (r >= l) {
-        int mid = l + (r - l) / 2;
-        if (arr[mid] == x)
+int binary_search(int arr[], int n, int target) {
+    int left = 0, right = n - 1;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (arr[mid] == target) {
             return mid;
-        if (arr[mid] > x)
-            return binarySearch(arr, l, mid - 1, x);
-        return binarySearch(arr, mid + 1, r, x);
+        }
+
+        if (arr[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
     }
+
     return -1;
 }
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        fprintf(stderr, "Usage: %s <n> <sorted_array>\n", argv[0]);
+        printf("Usage: %s <sorted list of integers>\n", argv[0]);
         return 1;
     }
 
-    int n = atoi(argv[1]);
+    int n = argc - 1;
     int arr[n];
 
     for (int i = 0; i < n; i++) {
-        arr[i] = atoi(argv[i + 2]);
+        arr[i] = atoi(argv[i + 1]);
     }
 
-    int x;
+    int target;
     printf("Enter the number to search: ");
-    scanf("%d", &x);
+    scanf("%d", &target);
 
-    int result = binarySearch(arr, 0, n - 1, x);
-    if (result == -1)
-        printf("Element %d is not present in the array\n", x);
-    else
-        printf("Element %d is present at index %d\n", x, result);
+    int result = binary_search(arr, n, target);
+
+    if (result != -1) {
+        printf("Element found at index: %d\n", result);
+    } else {
+        printf("Element not found in the array.\n");
+    }
 
     return 0;
 }
+
+
+Save as binary_serach.c
+
+    after code do the compile code
+     gcc sort.c -o sort
+     gcc binary_search -o binary_search
+     ./sort 5 7 6 4
+     OUTPUT:-
+     Enter the number to be Search:- 5
+     Enterd number INdex :- 0;
