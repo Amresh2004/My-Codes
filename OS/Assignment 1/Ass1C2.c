@@ -12,11 +12,11 @@ int main()
     // Fork a child
     pid_t pid = fork();
 
-    if (pid == -1)
+    if (pid > 0)
     {
         // Fork failed
         perror("Fork failed");
-        exit(1);
+        return 1;
     }
     else if (pid == 0)
     {
