@@ -1,4 +1,4 @@
-#include <stdio.h>
+/*#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
@@ -82,3 +82,63 @@ OUTPUT:-
     Sorted array: 3 4 6 8
     Enter the number to search: 3
     Element found at index: 0
+*/
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+
+void bubbleSort(int a[], int n) {
+    int i, j, temp;
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - i - 1; j++) {
+            if (a[j] > a[j + 1]) {
+                temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+    int a[n];
+    printf("Enter %d integers: ", n);
+    for (int i = 0; i < n; ++i) {
+        scanf("%d", &a[i]);
+    }
+
+    pid_t pid = fork();
+    if (pid == 0) {
+        pause();
+    } else if (pid > 0) {
+        bubbleSort(a, n);
+        printf("Sorted array:");
+        for (int i = 0; i < n; i++) {
+            printf("%d ", a[i]);
+        }
+        printf("\n");
+
+        char *args[n + 2];
+        args[0] = "./binary_search";
+        for (int i = 0; i < n; ++i) {
+            args[i + 1] = malloc(10);
+            snprintf(args[i + 1], 10, "%d", a[i]);
+        }
+        args[n + 1] = NULL;
+
+        kill(pid, SIGCONT);
+        execve("./binary_search", args, NULL);
+        perror("execve");
+    } else {
+        perror("Fork failed");
+    }
+
+    return 0;
+}
+
