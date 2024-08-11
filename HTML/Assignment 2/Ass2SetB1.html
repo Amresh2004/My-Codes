@@ -4,39 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 2 Set B Q1</title>
-    <link rel="stylesheet" href="style1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500" rel="stylesheet">
+    <style>
+        body {
+            overflow-x: hidden;
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+        }
+
+        #viewport {
+            padding-left: 250px;
+            display: flex;
+            transition: all 0.5s ease;
+        }
+
+        #content {
+            flex-grow: 1;
+            position: relative;
+        }
+
+        #sidebar {
+            z-index: 1000;
+            position: fixed;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background: #37474F;
+            transition: all 0.5s ease;
+        }
+
+        #sidebar header {
+            background-color: #263238;
+            font-size: 20px;
+            line-height: 52px;
+            text-align: center;
+        }
+
+        #sidebar header a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        #sidebar .nav a {
+            border-bottom: 1px solid #455A64;
+            color: #CFD8DC;
+            font-size: 14px;
+            padding: 16px 24px;
+            display: block;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px;
+            background-color: #f8f9fa;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info i {
+            margin-right: 5px;
+        }
+
+        .user-info a {
+            color: red;
+            text-decoration: none;
+        }
+
+        .red-text {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <div id="viewport">
         <div id="sidebar">
-          <header>
-            <a href="#">My App</a>
-          </header>
-          <ul class="nav" style="list-style-type: none; padding: 0;">
-            <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-            <li><a href="#"><i class="fas fa-link"></i> Shortcuts</a></li>
-            <li><a href="#"><i class="fas fa-th-large"></i> Overview</a></li>
-            <li><a href="#"><i class="far fa-calendar-alt"></i> Events</a></li>
-            <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
-            <li><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
-            <li><a href="#"><i class="far fa-comment-dots"></i> Contact</a></li>
-          </ul>
+            <header>
+                <a href="#">My App</a>
+            </header>
+            <ul class="nav" style="list-style-type: none; padding: 0;">
+                <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-link"></i> Shortcuts</a></li>
+                <li><a href="#"><i class="fas fa-th-large"></i> Overview</a></li>
+                <li><a href="#"><i class="far fa-calendar-alt"></i> Events</a></li>
+                <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="#"><i class="far fa-comment-dots"></i> Contact</a></li>
+            </ul>
         </div>
         <div id="content">
-          <div class="top-bar">
-            <div class="user-info">
-              <a href="#"><i class="fas fa-bell text-danger"></i></a>
-              <a href="#">Test User</a>
+            <div class="top-bar">
+                <div class="user-info">
+                    <a href="#"><i class="fas fa-bell text-danger"></i></a>
+                    <a href="#">Test User</a>
+                </div>
             </div>
-          </div>
-          <div class="container-fluid">
-            <h1>Simple Sidebar</h1>
-            <p>
-              Make sure to keep all page content within the 
-              <code class="red-text">#content</code>.
-            </p>
-          </div>
+            <div class="container-fluid">
+                <h1>Simple Sidebar</h1>
+                <p>
+                    Make sure to keep all page content within the 
+                    <code class="red-text">#content</code>.
+                </p>
+            </div>
         </div>
     </div>
 </body>
