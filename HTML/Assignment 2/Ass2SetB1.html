@@ -6,47 +6,42 @@
     <title>Assignment 2 Set B Q1</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        body{
+        body {
             font-family: 'Roboto', sans-serif;
             font-size: 16px;
-        }
-
-        #viewport {
-            padding-left: 250px;
             display: flex;
-            
+            padding-left: 250px;
         }
 
-        #content {
+        .content {
             flex-grow: 1;
             position: relative;
         }
 
-        #sidebar {
+        .sidebar {
             z-index: 1000;
             position: fixed;
             left: 0;
             width: 250px;
             height: 100%;
-            background: #37474F;
-            
+            background: slategray;
         }
 
-        #sidebar header {
-            background-color: #263238;
+        .sidebar-header {
+            background-color: darkslategray;
             font-size: 20px;
             line-height: 52px;
             text-align: center;
         }
 
-        #sidebar header a {
-            color: #fff;
+        .sidebar-header a {
+            color: white;
             text-decoration: none;
         }
 
-        #sidebar .nav a {
-            border-bottom: 1px solid #455A64;
-            color: #CFD8DC;
+        .nav a {
+            border-bottom: 1px solid lightslategray;
+            color: lightsteelblue;
             font-size: 14px;
             padding: 16px 24px;
             display: block;
@@ -57,7 +52,7 @@
             justify-content: flex-end;
             align-items: center;
             padding: 10px;
-            background-color: #f8f9fa;
+            background-color: whitesmoke;
         }
 
         .user-info {
@@ -80,36 +75,35 @@
     </style>
 </head>
 <body>
-    <div id="viewport">
-        <div id="sidebar">
-            <header>
-                <a href="#">My App</a>
-            </header>
-            <ul class="nav" style="list-style-type: none;">
-                <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="#"><i class="fas fa-link"></i> Shortcuts</a></li>
-                <li><a href="#"><i class="fas fa-th-large"></i> Overview</a></li>
-                <li><a href="#"><i class="far fa-calendar-alt"></i> Events</a></li>
-                <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
-                <li><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
-                <li><a href="#"><i class="far fa-comment-dots"></i> Contact</a></li>
-            </ul>
+    <div class="sidebar">
+        <header class="sidebar-header">
+            <a href="#">My App</a>
+        </header>
+        <ul class="nav" style="list-style-type: none;">
+            <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fas fa-link"></i> Shortcuts</a></li>
+            <li><a href="#"><i class="fas fa-th-large"></i> Overview</a></li>
+            <li><a href="#"><i class="far fa-calendar-alt"></i> Events</a></li>
+            <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
+            <li><a href="#"><i class="far fa-comment-dots"></i> Contact</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="top-bar">
+            <div class="user-info">
+                <a href="#"><i class="fas fa-bell red-text"></i></a>
+                <a href="#">Test User</a>
+            </div>
         </div>
-        <div id="content">
-            <div class="top-bar">
-                <div class="user-info">
-                    <a href="#"><i class="fas fa-bell text-danger"></i></a>
-                    <a href="#">Test User</a>
-                </div>
-            </div>
-            <div class="container-fluid">
-                <h1>Simple Sidebar</h1>
-                <p>
-                    Make sure to keep all page content within the 
-                    <code class="red-text">#content</code>.
-                </p>
-            </div>
+        <div class="container-fluid">
+            <h1>Simple Sidebar</h1>
+            <p>
+                Make sure to keep all page content within the 
+                <code class="red-text">.content</code>.
+            </p>
         </div>
     </div>
 </body>
 </html>
+
