@@ -1,70 +1,134 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
-#include <sys/wait.h>
-#include <dirent.h>
+#include <fcntl.h>
+#include <string.h>
+#include <stdlib.h>
 
-void display_lines(const char *filename, int n, int mode) {
-    FILE *file = fopen(filename, "r");
-    if (!file) {
-        perror("Failed to open file");
+// Function to search for a string in a file
+void search(char c, char *s, char *fn)
+{
+    int handle, i = 1, cnt = 0, j = 0;
+    char ch, buff[80];
+
+    // Open the file in read-only mode
+    if ((handle = open(fn, O_RDONLY)) == -1)
+    {
+        perror("Error opening file");
         return;
     }
-    char line[1024];
-    int total_lines = 0, skip_lines = 0;
 
-    if (mode == 1) {
-        while (fgets(line, sizeof(line), file)) total_lines++;
-        fseek(file, 0, SEEK_SET);
-        skip_lines = total_lines > n ? total_lines - n : 0;
-    }
-
-    for (int i = 0; mode == 0 ? i < n && fgets(line, sizeof(line), file) : fgets(line, sizeof(line), file); i++) {
-        if (mode == 2 || (mode == 0 && i < n) || (mode == 1 && i >= skip_lines)) {
-            printf("%s", line);
+    // Process the file based on the option provided
+    switch (c)
+    {
+    case 'f': // Find and print the first occurrence of the string
+        while (read(handle, &ch, 1) > 0)
+        {
+            if (ch == '\n')
+            {
+                buff[j] = '\0';
+                j = 0;
+                if (strstr(buff, s) != NULL)
+                {
+                    printf("%d : %s\n", i, buff);
+                    break; // Stop after the first occurrence
+                }
+                i++;
+            }
+            else
+                buff[j++] = ch;
         }
+        break;
+
+    case 'c': // Count the total number of occurrences of the string
+        while (read(handle, &ch, 1) > 0)
+        {
+            if (ch == '\n')
+            {
+                buff[j] = '\0';
+                j = 0;
+                if (strstr(buff, s) != NULL)
+                {
+                    cnt++;
+                }
+                i++;
+            }
+            else
+                buff[j++] = ch;
+        }
+        printf("Total No. of Occurrences = %d\n", cnt);
+        break;
+
+    case 'a': // Print all occurrences of the string
+        while (read(handle, &ch, 1) > 0)
+        {
+            if (ch == '\n')
+            {
+                buff[j] = '\0';
+                j = 0;
+                if (strstr(buff, s) != NULL)
+                    printf("%d : %s\n", i, buff);
+                i++;
+            }
+            else
+                buff[j++] = ch;
+        }
+        break;
+
+    default:
+        printf("Invalid option\n");
+        break;
     }
-    fclose(file);
+
+    // Close the file
+    close(handle);
 }
 
-int main() {
-    char line[1024], *args[100], *token;
-    while (1) {
-        printf("myshell$ ");
-        if (!fgets(line, sizeof(line), stdin)) break;
-        line[strcspn(line, "\n")] = '\0';
-        int i = 0;
-        token = strtok(line, " ");
-        while (token) {
-            args[i++] = token;
-            token = strtok(NULL, " ");
-        }
-        args[i] = NULL;
-        if (args[0] && !strcmp(args[0], "exit")) break;
+int main()
+{
+    char command[80], t1[20], t2[20], t3[20], t4[20];
+    int n;
 
-        pid_t pid = fork();
-        if (pid == -1) {
-            perror("fork");
-            exit(1);
-        } else if (pid == 0) {
-            if (args[0] && !strcmp(args[0], "typeline")) {
-                if (args[1] && args[2]) {
-                    if (!strcmp(args[1], "a")) display_lines(args[2], 0, 2);
-                    else if (args[1][0] == '-') display_lines(args[2], atoi(args[1] + 1), 1);
-                    else display_lines(args[2], atoi(args[1]), 0);
-                } else {
-                    printf("Usage: typeline <n|-n|a> <filename>\n");
-                }
-                exit(0);
-            } else {
-                execvp(args[0], args);
-                perror("execvp failed");
-                exit(1);
+    // Clear the terminal screen
+    system("clear");
+
+    // Infinite loop to keep the shell running
+    while (1)
+    {
+        printf("myShell$ "); // Display the shell prompt
+        fflush(stdout);      // Ensure the prompt is printed
+
+        // Read user input
+        if (fgets(command, 80, stdin) == NULL)
+        {
+            printf("\n");
+            break; // Exit if reading fails
+        }
+
+        // Remove newline character from input if present
+        command[strcspn(command, "\n")] = 0;
+
+        // Parse the command and its arguments
+        n = sscanf(command, "%s %s %s %s", t1, t2, t3, t4);
+
+        // If the command is "search", call the search function
+        if (strcmp(t1, "search") == 0)
+        {
+            if (n == 4) // Ensure all required arguments are provided
+            {
+                search(t2[0], t3, t4);
             }
-        } else {
-            wait(NULL);
+            else
+            {
+                printf("Invalid number of arguments\n");
+            }
+        }
+        else
+        {
+            // Handle unknown commands
+            printf("Unknown command, exiting.\n");
+            break;
         }
     }
+
     return 0;
 }
