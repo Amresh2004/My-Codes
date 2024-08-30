@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String Manipulation with Separators</title>
+</head>
+<body>
+    <h2>String Manipulation Form</h2>
+    <form method="post" action="SetB2.php">
+        <label for="inputString">Enter a string:</label>
+        <input type="text" id="inputString" name="inputString" required><br><br>
+
+        <label for="separator">Choose a separator:</label>
+        <select id="separator" name="separator" required>
+            <option value="#">#</option>
+            <option value="|">|</option>
+            <option value="%">%</option>
+        </select><br><br>
+
+        <input type="radio" id="split" name="operation" value="split" required>
+        <label for="split">Split the string using the separator</label><br>
+
+        <input type="radio" id="replace" name="operation" value="replace">
+        <label for="replace">Replace separator with another separator</label><br>
+
+        <input type="radio" id="findLast" name="operation" value="findLast">
+        <label for="findLast">Find the last word in the string</label><br><br>
+
+        <label for="newSeparator">If replacing, enter new separator:</label>
+        <input type="text" id="newSeparator" name="newSeparator"><br><br>
+
+        <input type="submit" name="submit" value="Submit">
+    </form>
+</body>
+</html>

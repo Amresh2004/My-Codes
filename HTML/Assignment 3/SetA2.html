@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String Manipulation</title>
+</head>
+<body>
+    <h2>String Manipulation Form</h2>
+    <form method="post" action="SetA2.php">
+        <label for="inputString">Enter a string:</label>
+        <input type="text" id="inputString" name="inputString" required><br><br>
+
+        <input type="radio" id="length" name="operation" value="length" required>
+        <label for="length">Find Length of String</label><br>
+
+        <input type="radio" id="vowels" name="operation" value="vowels">
+        <label for="vowels">Count Vowels</label><br>
+
+        <input type="radio" id="titlecase" name="operation" value="titlecase">
+        <label for="titlecase">Convert to Title Case</label><br>
+
+        <input type="radio" id="pad" name="operation" value="pad">
+        <label for="pad">Pad String with *</label><br>
+
+        <input type="radio" id="trim" name="operation" value="trim">
+        <label for="trim">Remove Leading Whitespaces</label><br>
+
+        <input type="radio" id="reverse" name="operation" value="reverse">
+        <label for="reverse">Reverse String</label><br><br>
+
+        <input type="submit" name="submit" value="Submit">
+    </form>
+</body>
+</html>

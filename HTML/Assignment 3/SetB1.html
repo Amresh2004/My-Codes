@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String Operations</title>
+</head>
+<body>
+    <h2>String Operations Form</h2>
+    <form method="post" action="SetB1.php">
+        <label for="largeString">Enter the large string:</label>
+        <input type="text" id="largeString" name="largeString" required><br><br>
+
+        <label for="smallString">Enter the small string:</label>
+        <input type="text" id="smallString" name="smallString" required><br><br>
+
+        <input type="radio" id="startsWith" name="operation" value="startsWith" required>
+        <label for="startsWith">Check if small string appears at the start of the large string</label><br>
+
+        <input type="radio" id="findPosition" name="operation" value="findPosition">
+        <label for="findPosition">Find the position of the small string in the large string</label><br>
+
+        <input type="radio" id="compareStrings" name="operation" value="compareStrings">
+        <label for="compareStrings">Compare first n characters (case-insensitive)</label><br><br>
+
+        <label for="numChars">Enter the number of characters to compare (for comparison option only):</label>
+        <input type="number" id="numChars" name="numChars"><br><br>
+
+        <input type="submit" name="submit" value="Submit">
+    </form>
+</body>
+</html>
