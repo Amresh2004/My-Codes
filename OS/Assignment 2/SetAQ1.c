@@ -64,18 +64,12 @@ int main()
     while (1) 
     {
         printf("myShell$ ");
-        fflush(stdout);
-
         fgets(cmd, 80, stdin);
-        cmd[strcspn(cmd, "\n")] = 0;
-
         if (strcmp(cmd, "exit") == 0) 
 	{
             break;
         }
-
         n = sscanf(cmd, "%s %s %s %s", t1, t2, t3, t4);
-
         if (strcmp(t1, "count") == 0) 
 	{
 		count(t2[0], t3);
