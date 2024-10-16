@@ -49,8 +49,7 @@ int main()
     while (1) 
     {
         printf("myShell$ ");
-
-        fgets(cmd, 80, stdin) == -1)
+        fgets(cmd, 80, stdin);
         n = sscanf(cmd, "%s %s %s %s", t1, t2, t3, t4);
 
         if (strcmp(t1, "list") == 0) 
