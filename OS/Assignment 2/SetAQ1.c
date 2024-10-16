@@ -58,17 +58,10 @@ int main()
 {
     char cmd[80], t1[20], t2[20], t3[20], t4[20];
     int n;
-
-    system("clear");
-
     while (1) 
     {
         printf("myShell$ ");
         fgets(cmd, 80, stdin);
-        if (strcmp(cmd, "exit") == 0) 
-	{
-            break;
-        }
         n = sscanf(cmd, "%s %s %s %s", t1, t2, t3, t4);
         if (strcmp(t1, "count") == 0) 
 	{
