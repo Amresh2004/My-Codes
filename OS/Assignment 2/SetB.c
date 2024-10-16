@@ -46,27 +46,11 @@ int main()
 {
     char cmd[80], t1[20], t2[20], t3[20], t4[20];
     int n;
-
-    system("clear");
-
     while (1) 
     {
         printf("myShell$ ");
-        fflush(stdout);
 
-        if (fgets(cmd, 80, stdin) == NULL) 
-        {
-            printf("\n");
-            break;
-        }
-
-        cmd[strcspn(cmd, "\n")] = 0;
-
-        if (strcmp(cmd, "exit") == 0) {
-            printf("Exiting myShell.\n");
-            break;
-        }
-
+        fgets(cmd, 80, stdin) == -1)
         n = sscanf(cmd, "%s %s %s %s", t1, t2, t3, t4);
 
         if (strcmp(t1, "list") == 0) 
