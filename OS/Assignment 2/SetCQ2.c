@@ -74,9 +74,8 @@ int main()
     while (1) 
     {
         printf("myShell$ ");
-        if (fgets(cmd, 80, stdin) == NULL) 
+        fgets(cmd, 80, stdin); 
 
-        cmd[strcspn(cmd, "\n")] = 0;
 
              n = sscanf(cmd, "%s %s %s %s", t1, t2, t3, t4);
 
