@@ -4,7 +4,6 @@ struct process
 	int id,WT,AT,BT,TAT,PR;
 };
 struct process a[10];
-// function for swapping
 void swap(int *b,int *c)
 {
 	int tem;
@@ -12,7 +11,6 @@ void swap(int *b,int *c)
 	*c=*b;
 	*b=tem;
 }
-//Driver function
 int main()
 {
 	int n,check_ar=0;
@@ -26,8 +24,6 @@ int main()
 	{
 		scanf("%d%d%d",&a[i].AT,&a[i].BT,&a[i].PR);
 		a[i].id=i+1;
-		// here we are checking that arrival time
-		// of the process are same or different
 		if(i==0)
 			check_ar=a[i].AT;
 
@@ -35,8 +31,6 @@ int main()
 			check_ar=1;
 
 	}
-	// if process are arrived at the different time 
-	// then sort the process on the basis of AT
 	if(check_ar!=0)
 	{
 		for(int i=0;i<n;i++)
@@ -53,9 +47,6 @@ int main()
 			}
 		}
 	}
-
-	// logic of Priority scheduling ( non preemptive) algo
-	// if all the process are arrived at different time
 	if(check_ar!=0)
 	{
 		a[0].WT=a[0].AT;
@@ -92,8 +83,6 @@ int main()
 
 		}
 	}
-
-	// if all the process are arrived at same time
 	else
 	{
 		for(int i=0;i<n;i++)
@@ -112,12 +101,7 @@ int main()
 
 			}
 			a[i].WT=Cmp_time-a[i].AT;
-
-			// completion time of the process
 			Cmp_time=Cmp_time+a[i].BT;
-
-			// Turn Around Time of the process
-			// compl-Arrival
 			a[i].TAT=Cmp_time-a[i].AT;
 			Total_WT=Total_WT+a[i].WT;
 			Total_TAT=Total_TAT+a[i].TAT;
@@ -128,7 +112,6 @@ int main()
 
 	Avg_WT=Total_WT/n;
 	Avg_TAT=Total_TAT/n;
-	// Printing of the results
 	printf("The process are\n");
 	printf("ID WT TAT\n");
 	for(int i=0;i<n;i++)
