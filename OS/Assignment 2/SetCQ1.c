@@ -58,20 +58,13 @@ if (c == 'c')
 }
 int main()
 {
-    char command[80], t1[20], t2[20], t3[20], t4[20];
+    char cmd[80], t1[20], t2[20], t3[20], t4[20];
     int n;
-    system("clear");
     while (1)
     {
-        printf("myShell$ "); 
-        fflush(stdout);      
-        if (fgets(command, 80, stdin) == NULL)
-        {
-            printf("\n");
-            break; 
-        }
-        command[strcspn(command, "\n")] = 0;
-        n = sscanf(command, "%s %s %s %s", t1, t2, t3, t4);
+        printf("myShell$ ");
+        fgets(cmd, 80, stdin);
+        n = sscanf(cmd, "%s %s %s %s", t1, t2, t3, t4);
         if (strcmp(t1, "search") == 0)
         {
             if (n == 4)
