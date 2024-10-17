@@ -27,7 +27,6 @@ void take_input()
 		printf("\n\n");
 	}
 }
-// to calculate the tat n wt
 void process()
 {
 	int time=0,cnt=0,i;
@@ -69,7 +68,6 @@ int getjob(int time)
 		}
 	return k;
 }
-//to print the output table
 void print_output()
 {
 	printf("\n\n");
