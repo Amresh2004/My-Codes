@@ -54,7 +54,7 @@ void typeline(char *s, char *fn) {
 }
 
 int main() {
-    char command[80], t1[20], t2[20], t3[20], t4[20];
+    char cmd[80], t1[20], t2[20], t3[20], t4[20];
     int n;
 
     system("clear");
@@ -62,13 +62,12 @@ int main() {
     while (1) 
     {
         printf("myShell$ ");
-        if (fgets(command, 80, stdin) == NULL) 
+        if (fgets(cmd, 80, stdin) == NULL) 
 
-        command[strcspn(command, "\n")] = 0;
+        cmd[strcspn(cmd, "\n")] = 0;
 
-        n = sscanf(command, "%s %s %s %s", t1, t2, t3, t4);
+             n = sscanf(cmd, "%s %s %s %s", t1, t2, t3, t4);
 
-      
             if (strcmp(t1, "typeline") == 0) 
             {
                 typeline(t2, t3);
