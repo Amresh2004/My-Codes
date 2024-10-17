@@ -12,63 +12,48 @@ void search(char c, char *s, char *fn)
         perror("Error opening file");
         return;
     }
-    switch (c)
+   while (read(handle, &ch, 1) > 0) 
+   {
+    if (ch == '\n') 
     {
-    case 'f':
-        while (read(handle, &ch, 1) > 0)
+        buff[j] = '\0'; j = 0;
+
+        switch (c) 
         {
-            if (ch == '\n')
-            {
-                buff[j] = '\0';
-                j = 0;
-                if (strstr(buff, s) != NULL)
-                {
-                    printf("%d : %s\n", i, buff);
+            case 'f':
+                if (strstr(buff, s)) 
+                { 
+                    printf("%d : %s\n", i, buff); 
                     break; 
                 }
                 i++;
-            }
-            else
-                buff[j++] = ch;
-        }
-        break;
-    case 'c': 
-        while (read(handle, &ch, 1) > 0)
-        {
-            if (ch == '\n')
-            {
-                buff[j] = '\0';
-                j = 0;
-                if (strstr(buff, s) != NULL)
-                {
-                    cnt++;
-                }
+                break;
+
+            case 'c':
+                if (strstr(buff, s)) cnt++;
                 i++;
-            }
-            else
-                buff[j++] = ch;
-        }
-        printf("Total No. of Occurrences = %d\n", cnt);
-        break;
-    case 'a': 
-        while (read(handle, &ch, 1) > 0)
-        {
-            if (ch == '\n')
-            {
-                buff[j] = '\0';
-                j = 0;
-                if (strstr(buff, s) != NULL)
+                break;
+
+            case 'a':
+                if (strstr(buff, s)) 
                     printf("%d : %s\n", i, buff);
                 i++;
-            }
-            else
-                buff[j++] = ch;
+                break;
+
+            default:
+                printf("Invalid option\n");
+                return;  
         }
-        break;
-    default:
-        printf("Invalid option\n");
-        break;
+    } 
+    else 
+    {
+        buff[j++] = ch;
     }
+}
+
+if (c == 'c') 
+    printf("Total No. of Occurrences = %d\n", cnt);
+
     close(handle);
 }
 int main()
