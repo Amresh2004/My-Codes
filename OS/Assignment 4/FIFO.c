@@ -42,7 +42,7 @@ void addlist(int page)
     ptr->next = NULL;
 
     if (start == NULL) 
-    {  // Queue is empty
+    {  
         start = last = ptr;
     } 
     else if (nof < n) 
@@ -51,15 +51,15 @@ void addlist(int page)
         last = ptr;
     } 
     else 
-    {  // FIFO replacement
+    {  
         Node *temp = start;
-        start = start->next;  // Remove the oldest page (first one in the list)
+        start = start->next; 
         free(temp);
         last->next = ptr;
         last = ptr;
     }
 
-    nof++;  // Increment number of frames used
+    nof++;  
 }
 
 void print() 
@@ -88,8 +88,8 @@ int main()
     for (i = 0; i < n1; i++) 
     {
         if (search(a[i]) == 0) 
-	{  // Page not found in memory, page fault
-            addlist(a[i]);  // Add page to the frame (FIFO replacement)
+	{ 
+            addlist(a[i]);  
             pgfault++;
             printf("\nPage fault Occurs");
             print();
