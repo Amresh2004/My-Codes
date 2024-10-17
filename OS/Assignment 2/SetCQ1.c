@@ -16,7 +16,8 @@ void search(char c, char *s, char *fn)
    {
     if (ch == '\n') 
     {
-        buff[j] = '\0'; j = 0;
+        buff[j] = '\0'; 
+        j = 0;
 
         switch (c) 
         {
