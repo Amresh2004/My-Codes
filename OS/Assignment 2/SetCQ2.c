@@ -7,17 +7,21 @@
 #include <stdlib.h> 
 #include <string.h> 
 
-void typeline(char *s, char *fn) {
+void typeline(char *s, char *fn) 
+{
     int handle, i = 0, cnt = 0, n;
     char ch;
 
-    if ((handle = open(fn, O_RDONLY)) == -1) {
+    if ((handle = open(fn, O_RDONLY)) == -1) 
+    {
         printf("File %s not found\n", fn);
         return;
     }
 
-    if (strcmp(s, "a") == 0) {
-        while (read(handle, &ch, 1) != 0) {
+    if (strcmp(s, "a") == 0) 
+    {
+        while (read(handle, &ch, 1) != 0) 
+        {
             printf("%c", ch);
         }
         close(handle);
@@ -26,25 +30,32 @@ void typeline(char *s, char *fn) {
 
     n = atoi(s);
 
-    if (n > 0) {
-        while (read(handle, &ch, 1) != 0) {
+    if (n > 0) 
+    {
+        while (read(handle, &ch, 1) != 0) 
+        {
             if (ch == '\n') i++;
             if (i == n) break;
             printf("%c", ch);
         }
         printf("\n");
-    } else if (n < 0) {
-        while (read(handle, &ch, 1) != 0) {
+    }
+    else if (n < 0) 
+    {
+        while (read(handle, &ch, 1) != 0) 
+        {
             if (ch == '\n') cnt++;
         }
 
         lseek(handle, 0, SEEK_SET);
 
-        while (read(handle, &ch, 1) != 0) {
+        while (read(handle, &ch, 1) != 0) 
+        {
             if (ch == '\n') i++;
             if (i == cnt + n - 1) break;
         }
-        while (read(handle, &ch, 1) != 0) {
+        while (read(handle, &ch, 1) != 0) 
+        {
             printf("%c", ch);
         }
         printf("\n");
@@ -53,7 +64,8 @@ void typeline(char *s, char *fn) {
     close(handle);
 }
 
-int main() {
+int main() 
+{
     char cmd[80], t1[20], t2[20], t3[20], t4[20];
     int n;
 
