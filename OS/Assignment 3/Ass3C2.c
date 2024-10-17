@@ -8,7 +8,6 @@ struct job
 int n,i,j,tq;
 float avg_tat=0; 
 float avg_wt=0;
-// to accept the info about processes
 void take_input()
 {
 	printf("Enter the no of jobs : ");
@@ -27,7 +26,6 @@ void take_input()
 		printf("\n\n");
 	}
 }
-// to sort the processes by arriaval time
 void sort()
 {
 	struct job temp;
@@ -44,7 +42,6 @@ void sort()
 		}
 	}
 }
-// to calculate the tat n wt
 void process()
 {
 	int jno=0,cnt=0,time=job[0].at;
@@ -82,7 +79,6 @@ void process()
 			break;
 	}
 }
-//to print the output table
 void print_output()
 {
 	printf("\n\n");
