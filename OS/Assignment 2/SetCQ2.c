@@ -59,60 +59,24 @@ int main() {
 
     system("clear");
 
-    while (1) {
+    while (1) 
+    {
         printf("myShell$ ");
-        fflush(stdout);
-
-        if (fgets(command, 80, stdin) == NULL) {
-            printf("\n");
-            break;
-        }
+        if (fgets(command, 80, stdin) == NULL) 
 
         command[strcspn(command, "\n")] = 0;
 
         n = sscanf(command, "%s %s %s %s", t1, t2, t3, t4);
 
-        switch (n) {
-        case 1:
-            if (fork() == 0) {
-                execlp(t1, t1, NULL);
-                perror(t1);
-                exit(EXIT_FAILURE);
-            }
-            break;
-
-        case 2:
-            if (fork() == 0) {
-                execlp(t1, t1, t2, NULL);
-                perror(t1);
-                exit(EXIT_FAILURE);
-            }
-            break;
-
-        case 3:
-            if (strcmp(t1, "typeline") == 0) {
+      
+            if (strcmp(t1, "typeline") == 0) 
+            {
                 typeline(t2, t3);
-            } else {
-                if (fork() == 0) {
-                    execlp(t1, t1, t2, t3, NULL);
-                    perror(t1);
-                    exit(EXIT_FAILURE);
-                }
+            } 
+            else 
+            {
+                printf("Error");
             }
-            break;
-
-        case 4:
-            if (fork() == 0) {
-                execlp(t1, t1, t2, t3, t4, NULL);
-                perror(t1);
-                exit(EXIT_FAILURE);
-            }
-            break;
-
-        default:
-            printf("Invalid command or too many arguments\n");
-            break;
-        }
 
         while (wait(NULL) > 0);
     }
