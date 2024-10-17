@@ -1,66 +1,54 @@
 #include <stdio.h>
-#include <sys/types.h>
-#include <sys/stat.h>
+#include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
-#include <dirent.h>
 #include <fcntl.h>
-#include <stdlib.h> 
-#include <string.h> 
+#include <sys/types.h>
 
-void typeline(char *s, char *fn) 
+
+void typeline(char *s, char *fn)
 {
-    int handle, i = 0, cnt = 0, n;
-    char ch;
+    int handle = open(fn, O_RDONLY);
 
-    if ((handle = open(fn, O_RDONLY)) == -1) 
+    if (strcmp(s, "a") == 0)
     {
-        printf("File %s not found\n", fn);
-        return;
+        char ch;
+        while (read(handle, &ch, 1) > 0)  putchar(ch);
     }
-
-    if (strcmp(s, "a") == 0) 
+    else
     {
-        while (read(handle, &ch, 1) != 0) 
+        int n = atoi(s);
+        char ch;
+        int lc = 0;
+
+        if (n > 0)
         {
-            printf("%c", ch);
+            while (read(handle, &ch, 1) > 0 && lc < n)
+            {
+                putchar(ch);
+                if (ch == '\n')  lc++;
+            }
         }
-        close(handle);
-        return;
+        else
+        {
+            int tl = 0;
+            lseek(handle, 0, SEEK_SET);
+            while (read(handle, &ch, 1) > 0)
+            {
+                if (ch == '\n')
+                    tl++;
+            }
+            lseek(handle, 0, SEEK_SET); 
+            lc = tl + n; 
+            while (read(handle, &ch, 1) > 0)
+            {
+                if (lc <= 0)
+                    putchar(ch);
+                if (ch == '\n')
+                    lc--;
+            }
+        }
     }
-
-    n = atoi(s);
-
-    if (n > 0) 
-    {
-        while (read(handle, &ch, 1) != 0) 
-        {
-            if (ch == '\n') i++;
-            if (i == n) break;
-            printf("%c", ch);
-        }
-        printf("\n");
-    }
-    else if (n < 0) 
-    {
-        while (read(handle, &ch, 1) != 0) 
-        {
-            if (ch == '\n') cnt++;
-        }
-
-        lseek(handle, 0, SEEK_SET);
-
-        while (read(handle, &ch, 1) != 0) 
-        {
-            if (ch == '\n') i++;
-            if (i == cnt + n - 1) break;
-        }
-        while (read(handle, &ch, 1) != 0) 
-        {
-            printf("%c", ch);
-        }
-        printf("\n");
-    }
-
     close(handle);
 }
 
