@@ -8,9 +8,9 @@ int a[] = {7, 3, 5, 8, 5, 8, 3, 6, 7, 3, 6, 7, 8, 5, 3};
 int front = 0;
 
 void fifo(int p) {
-    int k;
-    for (k = 0; k < frame; k++) {
-        if (mem[k] == p) {
+    int i;
+    for (i = 0; i< frame; i++) {
+        if (mem[i] == p) {
             return;
         }
     }
