@@ -8,16 +8,16 @@ int a[] = {7, 3, 5, 8, 5, 8, 3, 6, 7, 3, 6, 7, 8, 5, 3};
 
 int predict(int index) 
 {
-    int i, j, pos = -1, farthest = index;
+    int i, j, pos = -1, f = index;
     for (i = 0; i < frame; i++) 
     {
         for (j = index; j < n; j++) 
         {
             if (mem[i] == a[j]) 
             {
-                if (j > farthest) 
+                if (j > f) 
                 {
-                    farthest = j;
+                    f = j;
                     pos = i;
                 }
                 break;
