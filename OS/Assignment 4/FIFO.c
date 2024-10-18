@@ -7,10 +7,13 @@ int n = 15;
 int a[] = {7, 3, 5, 8, 5, 8, 3, 6, 7, 3, 6, 7, 8, 5, 3};
 int front = 0;
 
-void fifo(int p) {
+void fifo(int p) 
+{
     int i;
-    for (i = 0; i< frame; i++) {
-        if (mem[i] == p) {
+    for (i = 0; i< frame; i++) 
+    {
+        if (mem[i] == p) 
+        {
             return;
         }
     }
@@ -20,11 +23,14 @@ void fifo(int p) {
     front = (front + 1) % frame;
 }
 
-int main() {
+int main() 
+{
     int i, k;
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < n; i++) 
+    {
         fifo(a[i]);
-        for (k = 0; k < frame; k++) {
+        for (k = 0; k < frame; k++) 
+        {
             printf("%2d ", mem[k]);
         }
         printf("\n");
