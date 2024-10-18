@@ -31,7 +31,8 @@ void lru(int p, int time)
     }
     for (i = 1; i < frame; i++) 
     {
-        if (counter[i] < counter[f]) {
+        if (counter[i] < counter[f]) 
+        {
             f = i;
         }
     }
