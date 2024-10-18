@@ -7,26 +7,32 @@ int pagefault = 0;
 int n = 15;
 int a[] = {7, 3, 5, 8, 5, 8, 3, 6, 7, 3, 6, 7, 8, 5, 3};
 
-void lru(int p, int time) {
-    int k, f = 0;
-    for (k = 0; k < frame; k++) {
-        if (mem[k] == p) {
-            counter[k] = time;
+void lru(int p, int time) 
+{
+    int i, f = 0;
+    for (i = 0; i < frame; i++) 
+    {
+        if (mem[i] == p) 
+        {
+            counter[i] = time;
             return;
         }
     }
     printf("\n\nPage fault");
     pagefault++;
-    for (k = 0; k < frame; k++) {
-        if (mem[k] == -1) {
-            mem[k] = p;
-            counter[k] = time;
+    for (i = 0; i < frame; i++) 
+    {
+        if (mem[i] == -1) 
+        {
+            mem[i] = p;
+            counter[i] = time;
             return;
         }
     }
-    for (k = 1; k < frame; k++) {
-        if (counter[k] < counter[f]) {
-            f = k;
+    for (i = 1; i < frame; i++) 
+    {
+        if (counter[i] < counter[f]) {
+            f = i;
         }
     }
     mem[f] = p;
@@ -34,11 +40,13 @@ void lru(int p, int time) {
 }
 
 int main() {
-    int i, k;
-    for (i = 0; i < n; i++) {
+    int i, j;
+    for (i = 0; i < n; i++) 
+    {
         lru(a[i], i);
-        for (k = 0; k < frame; k++) {
-            printf("%2d ", mem[k]);
+        for (j = 0; j < frame; j++) 
+        {
+            printf("%2d ", mem[j]);
         }
         printf("\n");
     }
