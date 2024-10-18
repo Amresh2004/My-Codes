@@ -5,7 +5,7 @@ int mem[frame] = {-1, -1, -1};
 int counter[frame] = {0, 0, 0};
 int pagefault = 0;
 int n = 15;
-int a[] = {7, 3, 5, 8, 5, 8, 3, 6, 7, 3, 6, 7, 8, 5, 3};
+int a[] = {3,5,7,2,5,1,2,3,1,3,5,3,1,6,2};
 
 void lru(int p, int time) 
 {
