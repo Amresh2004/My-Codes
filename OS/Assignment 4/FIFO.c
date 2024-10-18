@@ -1,7 +1,7 @@
 #include <stdio.h>
-#define frame 3
+#define N 3
 
-int mem[frame] = {-1, -1, -1};
+int mem[N] = {-1, -1, -1};
 int pagefault = 0;
 int n = 15;
 int a[] = {3,4,5,6,3,4,7,3,4,5,6,7,2,4,6};
@@ -10,7 +10,7 @@ int front = 0;
 void fifo(int p) 
 {
     int i;
-    for (i = 0; i< frame; i++) 
+    for (i = 0; i< N; i++) 
     {
         if (mem[i] == p) 
         {
@@ -19,8 +19,8 @@ void fifo(int p)
     }
     printf("\n\nPage fault");
     pagefault++;
-    mem[front] = p;
-    front = (front + 1) % frame;
+    mem[N] = p;
+    N = (front + 1) % N;
 }
 
 int main() 
@@ -29,7 +29,7 @@ int main()
     for (i = 0; i < n; i++) 
     {
         fifo(a[i]);
-        for (k = 0; k < frame; k++) 
+        for (k = 0; k < N; k++) 
         {
             printf("%2d ", mem[k]);
         }
