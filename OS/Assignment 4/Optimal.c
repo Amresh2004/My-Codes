@@ -6,12 +6,17 @@ int pagefault = 0;
 int n = 15;
 int a[] = {7, 3, 5, 8, 5, 8, 3, 6, 7, 3, 6, 7, 8, 5, 3};
 
-int predict(int index) {
+int predict(int index) 
+{
     int i, j, pos = -1, farthest = index;
-    for (i = 0; i < frame; i++) {
-        for (j = index; j < n; j++) {
-            if (mem[i] == a[j]) {
-                if (j > farthest) {
+    for (i = 0; i < frame; i++) 
+    {
+        for (j = index; j < n; j++) 
+        {
+            if (mem[i] == a[j]) 
+            {
+                if (j > farthest) 
+                {
                     farthest = j;
                     pos = i;
                 }
@@ -25,18 +30,23 @@ int predict(int index) {
     return pos == -1 ? 0 : pos;
 }
 
-void opt(int p, int index) {
-    int k;
-    for (k = 0; k < frame; k++) {
-        if (mem[k] == p) {
+void opt(int p, int index) 
+{
+    int i;
+    for (i = 0; i < frame; i++) 
+    {
+        if (mem[i] == p) 
+        {
             return;
         }
     }
     printf("\n\nPage fault");
     pagefault++;
-    for (k = 0; k < frame; k++) {
-        if (mem[k] == -1) {
-            mem[k] = p;
+    for (i = 0; i < frame; i++) 
+    {
+        if (mem[i] == -1) 
+        {
+            mem[i] = p;
             return;
         }
     }
@@ -44,12 +54,15 @@ void opt(int p, int index) {
     mem[pos] = p;
 }
 
-int main() {
-    int i, k;
-    for (i = 0; i < n; i++) {
+int main() 
+{
+    int i, j;
+    for (i = 0; i < n; i++) 
+    {
         opt(a[i], i);
-        for (k = 0; k < frame; k++) {
-            printf("%2d ", mem[k]);
+        for (j = 0; j < frame; j++) 
+        {
+            printf("%2d ", mem[j]);
         }
         printf("\n");
     }
