@@ -23,11 +23,14 @@ void fifo(int p)
     front = (front + 1) % frame;
 }
 
-int main() {
+int main() 
+{
     int i, j;
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < n; i++) 
+    {
         fifo(a[i]);
-        for (j = 0; j < frame; j++) {
+        for (j = 0; j < frame; j++) 
+        {
             printf("%2d ", mem[j]);
         }
         printf("\n");
